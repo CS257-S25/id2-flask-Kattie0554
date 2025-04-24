@@ -1,9 +1,10 @@
-from app import *
+'''file: test_id2.py'''
 import unittest
+from app import *
 
 class TestApp(unittest.TestCase):
     def test_route_home(self):
-        self.app=app.test_client()
+        self.app = app.test_client()
         response = self.app.get('/', follow_redirects=True)
         self.assertEqual(b"This is the homepage:"\
             b"1) TO GET the top activity for a certain age, go to /get-top/'<'age'>'"\
@@ -19,8 +20,17 @@ class TestApp(unittest.TestCase):
             b"go to /get-activities/'<'category'>'/'<'subcategory'>'"\
             b"....  NOTE: basically choose Personal Care Activities and Sleeping "\
             b"because of incomplete test data", response.data )
-        
     def test_route_top_by_age(self):
-        self.app=app.test_client()
+        self.app = app.test_client()
         response = self.app.get('/get-top/23', follow_redirects=True)
         self.assertEqual(b"the top activity for people age 23 is T020901", response.data)
+
+    def test_get_all_categories(self):
+        self.app = app.test_client()
+        response = self.app.get('/get-all-categories', follow_redirects=True)
+        self.asserEqual(b"the categoy options are: ['Personal Care Activities', 'Household Activities', " \
+            b"'Caring For & Helping Household (HH) Members', 'Caring For & Helping Nonhousehold (NonHH) Members', " \
+            b"'Work & Work-Related Activities', 'Education', 'Consumer Purchases', 'Professional & Personal Care Services', " \
+            b"'Household Services', 'Government Services & Civic Obligations', 'Eating and Drinking', " \
+            b"'Socializing, Relaxing, and Leisure', 'Sports, Exercise, & Recreation', 'Religious and Spiritual Activities', " \
+            b"'Volunteer Activities', 'Telephone Calls', 'Traveling']", response.data)
