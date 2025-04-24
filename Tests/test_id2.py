@@ -2,9 +2,9 @@ from app import *
 import unittest
 
 class TestApp(unittest.TestCase):
-    def test_route(self):
+    def test_route_home(self):
         self.app=app.test_client()
-        response = self.app.get('/' follow_redirects=True)
+        response = self.app.get('/', follow_redirects=True)
         self.assertEqual(b"This is the homepage:" \
             "1) TO GET the top activity for a certain age, go to /get-top/'<'age'>'" \
             ".... Note: for dummy data age options are: 23, 57, 80, 71, 40, 56, 18 " \
