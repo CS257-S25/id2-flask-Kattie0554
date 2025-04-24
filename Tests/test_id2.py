@@ -31,11 +31,16 @@ class TestApp(unittest.TestCase):
         '''tests that the route to get all categories returns the correct thing'''
         self.app = app.test_client()
         response = self.app.get('/get-all-categories', follow_redirects=True)
-        self.assertEqual(b"the categoy options are: ['Personal Care Activities', 'Household Activities', " \
-            b"'Caring For & Helping Household (HH) Members', 'Caring For & Helping Nonhousehold (NonHH) Members', " \
-            b"'Work & Work-Related Activities', 'Education', 'Consumer Purchases', 'Professional & Personal Care Services', " \
-            b"'Household Services', 'Government Services & Civic Obligations', 'Eating and Drinking', " \
-            b"'Socializing, Relaxing, and Leisure', 'Sports, Exercise, & Recreation', 'Religious and Spiritual Activities', " \
+        self.assertEqual(b"the categoy options are: "
+            b"['Personal Care Activities', 'Household Activities', " \
+            b"'Caring For & Helping Household (HH) Members', " \
+            b"'Caring For & Helping Nonhousehold (NonHH) Members', " \
+            b"'Work & Work-Related Activities', 'Education', " \
+            b"'Consumer Purchases', 'Professional & Personal Care Services', " \
+            b"'Household Services', 'Government Services & Civic Obligations', " \
+            b"'Eating and Drinking', " \
+            b"'Socializing, Relaxing, and Leisure', 'Sports, Exercise, & Recreation', " \
+            b"'Religious and Spiritual Activities', " \
             b"'Volunteer Activities', 'Telephone Calls', 'Traveling']", response.data)
 
     def test_get_subcategories_for_category(self):
@@ -52,4 +57,5 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/get-activities/Personal Care Activities/Sleeping', follow_redirects=True)
         self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: ['Sleeping', 'Sleeplessness']", response.data)
     #need to make tests for cases where they forget to add a thing like /category also if they spell something wrong
+    
     
