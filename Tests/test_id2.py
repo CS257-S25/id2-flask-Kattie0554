@@ -45,6 +45,6 @@ class TestApp(unittest.TestCase):
     def test_get_activities_from_sub(self):
         self.app = app.test_client()
         response = self.app.get('/get-activities/Personal Care Activities/Sleeping', follow_redirects=True)
-        self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: ['Sleeping', 'Sleeplessness'] ", response.data)
+        self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: ['Sleeping', 'Sleeplessness']", response.data)
     #need to make tests for cases where they forget to add a thing like /category also if they spell something wrong
     
