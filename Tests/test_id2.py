@@ -20,4 +20,7 @@ class TestApp(unittest.TestCase):
             b"....  NOTE: basically choose Personal Care Activities and Sleeping "\
             b"because of incomplete test data", response.data )
         
-    
+    def test_route_top_by_age(self):
+        self.app=app.test_client()
+        response = self.app.get('/get-top/23', follow_redirects=True)
+        self.assertEqual(b"the top activity for people age 23 is T020901", response.data)
