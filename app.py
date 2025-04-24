@@ -25,14 +25,13 @@ def homepage():
     "....  NOTE: basically choose Personal Care Activities and Sleeping "\
     "because of incomplete test data"
 
-#route that uses paramater "age" 
 @app.route('/get-top/<age>')
 def get_top_by_age(age):
     '''param: age, the age you want to see the top category for
     returns a string that gives the information for the top activity for an age group'''
-    return "the top activity for people age " + str(age) + " is " + str(get_most_common_top_activity(age, 1)[0])
+    top=get_most_common_top_activity(age, 1)[0]
+    return "the top activity for people age " + str(age) + " is " + str(top)
 
-# need app.route(/get-all-categories) will return personal care, household, etc
 @app.route('/get-all-categories')
 def get_all_categories():
     '''returns a list of category options'''
@@ -40,7 +39,6 @@ def get_all_categories():
     category_list =get_list_of_categories(data_for_get_category)
     return "the categoy options are: " + str(category_list)
 
-# need app.route(/get-subcategories/<category>) will return the subcategories for that category
 @app.route('/get-subcategories/<category>')
 def get_subcategories_for_category(category):
     ''' param: category, the category you want more info about(subcategories for)
@@ -53,7 +51,6 @@ def cat_missing_for_get_sub():
     '''returns an error message if you forget to add the category'''
     return "Error: please include a category /get-subcategories/add-your-category"
 
-# need app.route(/get-activity/<category>/<subcategory>) will return the activities for that subcategory
 @app.route('/get-activities/<category>/<subcategory>')
 def get_activities_from_sub(category, subcategory):
     ''' param: category, the category you want to look at 
@@ -65,12 +62,12 @@ def get_activities_from_sub(category, subcategory):
 @app.errorhandler(404)
 def page_not_found(e):
     '''returns error message if the page wasn't found'''
-    return "sorry, wrong format. try again.... refer to homepage (/) for options "
+    return f"{e} sorry, wrong format. try again.... refer to homepage (/) for options "
 
 @app.errorhandler(500)
 def python_bug(e):
     ''' returns a message to let you know if there's an internal error/bug'''
-    return "a bug!"
+    return f"{e} a bug!"
 
 if __name__ == '__main__':
     app.run()
