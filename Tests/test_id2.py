@@ -28,7 +28,7 @@ class TestApp(unittest.TestCase):
     def test_get_all_categories(self):
         self.app = app.test_client()
         response = self.app.get('/get-all-categories', follow_redirects=True)
-        self.asserEqual(b"the categoy options are: ['Personal Care Activities', 'Household Activities', " \
+        self.assertEqual(b"the categoy options are: ['Personal Care Activities', 'Household Activities', " \
             b"'Caring For & Helping Household (HH) Members', 'Caring For & Helping Nonhousehold (NonHH) Members', " \
             b"'Work & Work-Related Activities', 'Education', 'Consumer Purchases', 'Professional & Personal Care Services', " \
             b"'Household Services', 'Government Services & Civic Obligations', 'Eating and Drinking', " \
