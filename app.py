@@ -1,23 +1,29 @@
 '''Replace me with your flask app'''
 from flask import Flask
-import csv
-from ProductionCode.loadData import load_data
-from ProductionCode.get_top_by_age import *
-from ProductionCode.getActivityByCategory import *
+from ProductionCode.get_top_by_age import get_most_common_top_activity
+from ProductionCode.getActivityByCategory import load_category_data
+from ProductionCode.getActivityByCategory import get_list_of_categories
+from ProductionCode.getActivityByCategory import get_list_of_subcategories
+from ProductionCode.getActivityByCategory import get_activities_from_subcategory
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
     '''Purpose: Homepage provides instructions for what URL to go to see the data you choose'''
-    return "This is the homepage:" \
-    "1) TO GET the top activity for a certain age, go to /get-top/'<'age'>'" \
-    ".... Note: for dummy data age options are: 23, 57, 80, 71, 40, 56, 18 " \
+    return "This is the homepage:"\
+    "1) TO GET the top activity for a certain age, go to /get-top/'<'age'>'"\
+    ".... Note: for dummy data age options are: 23, 57, 80, 71, 40, 56, 18 "\
     "2) TO GET a list of all category options, go to /get-all-categories "\
-    "....  NOTE: for now you can only shoose these categories: Personal Care Activities or Household Activities"\
-    " 3) TO GET a list of subcategory options from a category, go to /get-subcategories/'<'category'>'"\
-    "....  NOTE: for now lowkey just use Personal Care Activities as Category becuase the test data is incomplete"\
-    "4) TO GET a list of activities from a subcategory, go to /get-activities/'<'category'>'/'<'subcategory'>'"\
-    "....  NOTE: basically choose Personal Care Activities and Sleeping because of incomplete test data"
+    "....  NOTE: for now you can only shoose these categories: "\
+    "Personal Care Activities or Household Activities"\
+    "3) TO GET a list of subcategory options from a category,"\
+    " go to /get-subcategories/'<'category'>'"\
+    "....  NOTE: for now lowkey just use Personal Care Activities as Category "\
+    "becuase the test data is incomplete"\
+    "4) TO GET a list of activities from a subcategory, "\
+    "go to /get-activities/'<'category'>'/'<'subcategory'>'"\
+    "....  NOTE: basically choose Personal Care Activities and Sleeping "\
+    "because of incomplete test data"
 
 #route that uses paramater "age" 
 @app.route('/get-top/<age>')
@@ -59,7 +65,7 @@ def get_activities_from_sub(category, subcategory):
 @app.errorhandler(404)
 def page_not_found(e):
     '''returns error message if the page wasn't found'''
-    return "sorry, wrong format, do this instead: "
+    return "sorry, wrong format. try again.... refer to homepage (/) for options "
 
 @app.errorhandler(500)
 def python_bug(e):
