@@ -44,20 +44,26 @@ def get_subcategories_for_category(category):
 
 @app.route('/get-subcategories/')
 def cat_missing_for_get_sub():
+    '''returns an error message if you forget to add the category'''
     return "Error: please include a category /get-subcategories/add-your-category"
 
 # need app.route(/get-activity/<category>/<subcategory>) will return the activities for that subcategory
 @app.route('/get-activities/<category>/<subcategory>')
 def get_activities_from_sub(category, subcategory):
+    ''' param: category, the category you want to look at 
+    param: subcategory, the subcategory you want more info about (activities for)
+    returns a list of activities from a subcategory'''
     activities = get_activities_from_subcategory(category, subcategory)
     return f"here are teh activities for {subcategory} in {category}: {activities}  "
 
 @app.errorhandler(404)
 def page_not_found(e):
+    '''returns error message if the page wasn't found'''
     return "sorry, wrong format, do this instead: "
 
 @app.errorhandler(500)
 def python_bug(e):
+    ''' returns a message to let you know if there's an internal error/bug'''
     return "a bug!"
 
 if __name__ == '__main__':
