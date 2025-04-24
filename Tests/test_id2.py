@@ -64,6 +64,7 @@ class TestApp(unittest.TestCase):
     # also if they spell something wrong
 
     def assert_404(self, route):
+        '''test to make sure error returns correct thing'''
         response = self.app.get(route)
         self.assertEqual(response.status_code, 404)
         self.assertIn(b"404 Not Found: The requested URL was not found on the server. " \
@@ -79,3 +80,8 @@ class TestApp(unittest.TestCase):
     #def test_invalid_inputs(self):
     #response = self.app.get("/get-top/eighteen")
     #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
+
+    #@app.route('/get-subcategories/')
+    #def cat_missing_for_get_sub():
+    #'''returns an error message if you forget to add the category'''
+    #return "Error: please include a category /get-subcategories/add-your-category"

@@ -46,11 +46,6 @@ def get_subcategories_for_category(category):
     sub_list = get_list_of_subcategories(category)
     return f"these are the subcategories: {sub_list} for {category}"
 
-@app.route('/get-subcategories/')
-def cat_missing_for_get_sub():
-    '''returns an error message if you forget to add the category'''
-    return "Error: please include a category /get-subcategories/add-your-category"
-
 @app.route('/get-activities/<category>/<subcategory>')
 def get_activities_from_sub(category, subcategory):
     ''' param: category, the category you want to look at 
