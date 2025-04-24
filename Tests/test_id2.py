@@ -13,5 +13,5 @@ class TestApp(unittest.TestCase):
             " 3) TO GET a list of subcategory options from a category, go to /get-subcategories/'<'category'>'"\
             "....  NOTE: for now lowkey just use Personal Care Activities as Category becuase the test data is incomplete"\
             "4) TO GET a list of activities from a subcategory, go to /get-activities/'<'category'>'/'<'subcategory'>'"\
-            "....  NOTE: basically choose Personal Care Activities and Sleeping because of incomplete test data", response.data )
+            "....  NOTE: basically choose Personal Care Activities and Sleeping because of incomplete test data")
         
