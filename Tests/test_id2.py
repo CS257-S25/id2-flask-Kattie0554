@@ -34,3 +34,12 @@ class TestApp(unittest.TestCase):
             b"'Household Services', 'Government Services & Civic Obligations', 'Eating and Drinking', " \
             b"'Socializing, Relaxing, and Leisure', 'Sports, Exercise, & Recreation', 'Religious and Spiritual Activities', " \
             b"'Volunteer Activities', 'Telephone Calls', 'Traveling']", response.data)
+
+    def test_get_subcategories_for_category(self):
+        self.app = app.test_client()
+        response = self.app.get('/get-subcategories/Personal Care Activities', follow_redirects=True)
+        self.assertEqual(b"these are the subcategories: "
+        b"['Sleeping', 'Grooming', 'Health-related self care', 'Personal Activities', 'Personal Care Emergencies'] "
+        b"for Personal Care Activities", response.data)
+    #need to make tests for cases where they forget to add a thing like /category also if they spell something wrong
+    #here are the activities for Sleeping in Personal Care Activities: ['Sleeping', 'Sleeplessness']

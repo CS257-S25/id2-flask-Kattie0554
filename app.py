@@ -57,7 +57,7 @@ def get_activities_from_sub(category, subcategory):
     param: subcategory, the subcategory you want more info about (activities for)
     returns a list of activities from a subcategory'''
     activities = get_activities_from_subcategory(category, subcategory)
-    return f"here are teh activities for {subcategory} in {category}: {activities}  "
+    return f"here are the activities for {subcategory} in {category}: {activities}  "
 
 @app.errorhandler(404)
 def page_not_found(e):
