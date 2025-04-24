@@ -63,10 +63,12 @@ class TestApp(unittest.TestCase):
     #need to make tests for cases where they forget to add a thing like /category
     # also if they spell something wrong
 
-    #def assert_4-4(self, route):
-    #response = self.app.get(route)
-    #self.assertEqual(response.status_code, 404)
-    #self.assertIn(b"", response.data)
+    def assert_404(self, route):
+        response = self.app.get(route)
+        self.assertEqual(response.status_code, 404)
+        self.assertIn(b"404 Not Found: The requested URL was not found on the server. " \
+        b"If you entered the URL manually please check your spelling and try again. " \
+        b"... refer to homepage (/) for options", response.data)
 
     #def test_missing_routes(self):
     #self.assert_404('/get-top/)

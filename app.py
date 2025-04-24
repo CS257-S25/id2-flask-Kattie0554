@@ -62,7 +62,7 @@ def get_activities_from_sub(category, subcategory):
 @app.errorhandler(404)
 def page_not_found(e):
     '''returns error message if the page wasn't found'''
-    return f"{e} sorry, wrong format. try again.... refer to homepage (/) for options "
+    return f"{e} ... refer to homepage (/) for options "
 
 @app.errorhandler(500)
 def python_bug(e):
