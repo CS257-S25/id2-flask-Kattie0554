@@ -46,16 +46,19 @@ class TestApp(unittest.TestCase):
     def test_get_subcategories_for_category(self):
         '''tets that the route to get subcatefories given a category returns the right thing '''
         self.app = app.test_client()
-        response = self.app.get('/get-subcategories/Personal Care Activities', follow_redirects=True)
+        response = self.app.get('/get-subcategories/Personal Care Activities', 
+                                follow_redirects=True)
         self.assertEqual(b"these are the subcategories: "
-        b"['Sleeping', 'Grooming', 'Health-related self care', 'Personal Activities', 'Personal Care Emergencies'] "
+        b"['Sleeping', 'Grooming', 'Health-related self care', " \
+        b"'Personal Activities', 'Personal Care Emergencies'] "
         b"for Personal Care Activities", response.data)
 
     def test_get_activities_from_sub(self):
         '''tests that the route to get activities returns the correct thing '''
         self.app = app.test_client()
-        response = self.app.get('/get-activities/Personal Care Activities/Sleeping', follow_redirects=True)
-        self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: ['Sleeping', 'Sleeplessness']", response.data)
+        response = self.app.get('/get-activities/Personal Care Activities/Sleeping', 
+                                follow_redirects=True)
+        self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: "
+        b"['Sleeping', 'Sleeplessness']", response.data)
     #need to make tests for cases where they forget to add a thing like /category also if they spell something wrong
-    
-    
+
