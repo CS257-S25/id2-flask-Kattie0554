@@ -48,6 +48,16 @@ def load_activity_data():
 
         return data
 
+# need to add a thing that returns a list of all category options:
+def get_list_of_categories(dataset):
+    '''returns a list of category options form the category data'''
+    list_of_categories =[]
+    for row in dataset:
+        list_of_categories.append(row['Category'])
+    return list_of_categories
+
+
+
 def get_category_from_data(category):
     '''Purpose: gets the category ID from the selected category
     Args: category: the category to get the ID for

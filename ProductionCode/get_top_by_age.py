@@ -89,6 +89,7 @@ def count_top_activites(matching_rows):
             top_activities[top_activity] += 1 # increment the count of the top activity
     return top_activities
 
+# also need a function that translates activity ID to a name 
 def get_most_common_top_activity(age, top_n):
     ''' purpose:figures out which top activity is the most common in the dictionary
     args: age: the age group to get the most common activity for
