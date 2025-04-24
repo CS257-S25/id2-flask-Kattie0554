@@ -60,5 +60,20 @@ class TestApp(unittest.TestCase):
                                 follow_redirects=True)
         self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: "
         b"['Sleeping', 'Sleeplessness']", response.data)
-    #need to make tests for cases where they forget to add a thing like /category 
+    #need to make tests for cases where they forget to add a thing like /category
     # also if they spell something wrong
+
+    #def assert_4-4(self, route):
+    #response = self.app.get(route)
+    #self.assertEqual(response.status_code, 404)
+    #self.assertIn(b"", response.data)
+
+    #def test_missing_routes(self):
+    #self.assert_404('/get-top/)
+    #self. assert_404('/get-activities/Personal Care Activities/ )
+    #response.assertEqual(response.status_code, 200)
+    #self.assertIN(b"please include a category", response.data)
+
+    #def test_invalid_inputs(self):
+    #response = self.app.get("/get-top/eighteen")
+    #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
