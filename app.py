@@ -70,11 +70,11 @@ def missing_cat_and_sub():
     return "please include a category and a subcategory, " \
         "ex: /get-activities/Personal Care activities/Sleeping"
 
-@app.route('/get-activities/<category>/')
-def missing_subcategory():
-    '''returns a message if you forgot to add just a subcategory'''
-    return "please include subcategory, " \
-        "ex: /get-activities/Personal Care activities/Sleeping"
+#@app.route('/get-activities/<category>/')
+#def missing_subcategory():
+    #'''returns a message if you forgot to add just a subcategory'''
+    #return "please include subcategory, " \
+        #"ex: /get-activities/Personal Care activities/Sleeping"
 
 @app.errorhandler(404)
 def page_not_found(e):

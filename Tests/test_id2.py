@@ -60,7 +60,7 @@ class TestApp(unittest.TestCase):
                                 follow_redirects=True)
         self.assertEqual(b"here are the activities for Sleeping in Personal Care Activities: "
         b"['Sleeping', 'Sleeplessness']", response.data)
- 
+
     def assert_404(self, route):
         '''test to make sure error returns correct thing'''
         response = self.app.get(route)
@@ -75,28 +75,28 @@ class TestApp(unittest.TestCase):
         response= self.app.get('/get-top/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"please include an age, ex: /get-top/23", response.data)
-    
+  
     def test_missing_category(self):
         '''test for missing_category route'''
         response = self.app.get('/get-subcategories/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"please include a category, " \
             b"ex: /get-subcategories/Personal Care Activities", response.data)
-        
+     
     def test_missing_cat_and_sub(self):
         '''test for missing_cat_and_sub route'''
         response = self.app.get('/get-activities/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"please include a category and a subcategory, " \
             b"ex: /get-activities/Personal Care activities/Sleeping", response.data)
-        
-    def test_missing_subcategory(self):
-        '''test for missing_subcategory'''
-        response = self.app.get('/get-activities/Personal Care Activities/')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b"please include subcategory, " \
-            b"ex: /get-activities/Personal Care activities/Sleeping", response.data)
-             
+ 
+    #def test_missing_subcategory(self):
+        #'''test for missing_subcategory'''
+        #response = self.app.get('/get-activities/Personal Care Activities/')
+        #self.assertEqual(response.status_code, 200)
+        #self.assertIn(b"please include subcategory, " \
+            #b"ex: /get-activities/Personal Care activities/Sleeping", response.data)
+       
     #def test_invalid_inputs(self):
         #response = self.app.get("/get-top/eighteen")
         #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
