@@ -64,6 +64,18 @@ def get_activities_from_sub(category, subcategory):
     activities = get_activities_from_subcategory(category, subcategory)
     return f"here are the activities for {subcategory} in {category}: {activities}"
 
+@app.route('/get-activities/')
+def missing_cat_and_sub():
+    '''returns a message if you forgot to add a category and subcategory'''
+    return "please include a category and a subcategory, " \
+        "ex: /get-activities/Personal Care activities/Sleeping"
+
+@app.route('/get-activities/<category>/')
+def missing_subcategory():
+    '''returns a message if you forgot to add just a subcategory'''
+    return "please include subcategory, " \
+        "ex: /get-activities/Personal Care activities/Sleeping"
+
 @app.errorhandler(404)
 def page_not_found(e):
     '''returns error message if the page wasn't found'''
