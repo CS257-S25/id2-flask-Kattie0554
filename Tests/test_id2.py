@@ -96,7 +96,6 @@ class TestApp(unittest.TestCase):
         #self.assertEqual(response.status_code, 200)
         #self.assertIn(b"please include subcategory, " \
             #b"ex: /get-activities/Personal Care activities/Sleeping", response.data)
-     
     #def test_invalid_inputs(self):
         #response = self.app.get("/get-top/eighteen")
         #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
