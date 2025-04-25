@@ -88,14 +88,14 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/get-activities/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"please include a category and a subcategory, " \
-            "ex: /get-activities/Personal Care activities/Sleeping")
+            b"ex: /get-activities/Personal Care activities/Sleeping")
         
     def test_missing_subcategory(self):
         '''test for missing_subcategory'''
         response = self.app.get('/get-activities/Personal Care Activities/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"please include subcategory, " \
-        "ex: /get-activities/Personal Care activities/Sleeping")
+            b"ex: /get-activities/Personal Care activities/Sleeping")
              
     #def test_invalid_inputs(self):
         #response = self.app.get("/get-top/eighteen")
