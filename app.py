@@ -32,6 +32,11 @@ def get_top_by_age(age):
     top=get_most_common_top_activity(age, 1)[0]
     return "the top activity for people age " + str(age) + " is " + str(top)
 
+@app.route('/get-top/')
+def missing_age():
+    '''returns a message if you forgot to add a /age'''
+    return "please include an age, ex: /get-top/23", 200
+
 @app.route('/get-all-categories')
 def get_all_categories():
     '''returns a list of category options'''
@@ -45,6 +50,11 @@ def get_subcategories_for_category(category):
     returns a list of subcategories for a given category'''
     sub_list = get_list_of_subcategories(category)
     return f"these are the subcategories: {sub_list} for {category}"
+
+@app.route('/get-subcategories/')
+def missing_category():
+    '''returns a message if you forgot to add a /category'''
+    return "please include a category, ex: /get-subcategories/Personal Care Activities", 200
 
 @app.route('/get-activities/<category>/<subcategory>')
 def get_activities_from_sub(category, subcategory):

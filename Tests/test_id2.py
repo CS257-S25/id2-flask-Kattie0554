@@ -72,11 +72,20 @@ class TestApp(unittest.TestCase):
         b"... refer to homepage (/) for options", response.data)
 
     def test_missing_routes(self):
-        self.assert_404('/get-top/')
-        self.assert_404('/get-subcategories/')
         self.assert_404('/get-activities/')
         self.assert_404('/get-activities/Personal Care Activities/')
+
+    def test_missing_age(self):
+        response= self.app.get('/get-top/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"please include an age, ex: /get-top/23", response.data)
     
+    def test_missing_category(self):
+        response = self.app.get('/get-subcategories/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"please include a category, " \
+            b"ex: /get-subcategories/Personal Care Activities", response.data)
+        
     #def test_invalid_inputs(self):
-    #response = self.app.get("/get-top/eighteen")
-    #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
+        #response = self.app.get("/get-top/eighteen")
+        #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
