@@ -71,17 +71,12 @@ class TestApp(unittest.TestCase):
         b"If you entered the URL manually please check your spelling and try again. " \
         b"... refer to homepage (/) for options", response.data)
 
-    #def test_missing_routes(self):
-    #self.assert_404('/get-top/)
-    #self. assert_404('/get-activities/Personal Care Activities/ )
-    #response.assertEqual(response.status_code, 200)
-    #self.assertIN(b"please include a category", response.data)
-
+    def test_missing_routes(self):
+        self.assert_404('/get-top/')
+        self.assert_404('/get-subcategories/')
+        self.assert_404('/get-activities/')
+        self.assert_404('/get-activities/Personal Care Activities/')
+    
     #def test_invalid_inputs(self):
     #response = self.app.get("/get-top/eighteen")
     #self.assertEqual(response.status_code. 200) if i add to app.py a test valid age thing
-
-    #@app.route('/get-subcategories/')
-    #def cat_missing_for_get_sub():
-    #'''returns an error message if you forget to add the category'''
-    #return "Error: please include a category /get-subcategories/add-your-category"
